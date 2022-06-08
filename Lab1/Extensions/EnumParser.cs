@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using Lab1.Enums;
 
 namespace Lab1.Extensions

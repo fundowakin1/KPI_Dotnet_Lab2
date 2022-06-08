@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace Lab1.Seeders
+﻿namespace Lab1.Seeders
 {
     public class XmlSeed
     {

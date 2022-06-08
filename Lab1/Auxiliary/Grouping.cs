@@ -11,13 +11,6 @@ namespace Lab1.Auxiliary
         public TKey Key { get; set; }
 
         public Grouping() { }
-        public Grouping(IGrouping<TKey, TValue> grouping)
-        {
-            if (grouping == null)
-                throw new ArgumentNullException(nameof(grouping));
-            Key = grouping.Key;
-            Values = grouping;
-        }
         public IEnumerator<TValue> GetEnumerator()
         {
             return Values.GetEnumerator();
