@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LicensedDrivers>
+  <LicensedDriver>
+    <LicenseId>1</LicenseId>
+    <Name>Yehor</Name>
+    <Surname>Kalchenko</Surname>
+    <Patronymic>Oleksandrovich</Patronymic>
+    <DateOfBirth>29.09.2003</DateOfBirth>
+    <RegistrationAddress>Poltava</RegistrationAddress>
+  </LicensedDriver>
+  <LicensedDriver>
+    <LicenseId>2</LicenseId>
+    <Name>Alisa</Name>
+    <Surname>Proshchenko</Surname>
+    <Patronymic>Genadievna</Patronymic>
+    <DateOfBirth>30.10.2000</DateOfBirth>
+    <RegistrationAddress>Kyiv</RegistrationAddress>
+  </LicensedDriver>
+  <LicensedDriver>
+    <LicenseId>3</LicenseId>
+    <Name>Artem</Name>
+    <Surname>Stankov</Surname>
+    <Patronymic>Batkovych</Patronymic>
+    <DateOfBirth>12.01.2001</DateOfBirth>
+    <RegistrationAddress>Sarny</RegistrationAddress>
+  </LicensedDriver>
+  <LicensedDriver>
+    <LicenseId>4</LicenseId>
+    <Name>Vitaly</Name>
+    <Surname>Vynnyk</Surname>
+    <Patronymic>Vadymovich</Patronymic>
+    <DateOfBirth>25.01.2005</DateOfBirth>
+    <RegistrationAddress>Birky</RegistrationAddress>
+  </LicensedDriver>
+  <LicensedDriver>
+    <LicenseId>12</LicenseId>
+    <Surname>Bubka</Surname>
+    <Name>Alison</Name>
+    <Patronymic>Bubkova</Patronymic>
+    <DateOfBirth>30.10.2001</DateOfBirth>
+    <RegistrationAddress>Kyiv</RegistrationAddress>
+  </LicensedDriver>
+</LicensedDrivers>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Models>
+	<Model>
+		<Id>1</Id>
+		<BrandName>Audi</BrandName>
+		<ManufacturerId>1</ManufacturerId>
+		<Name>A8</Name>
+	</Model>
+	<Model>
+		<Id>2</Id>
+		<BrandName>Tesla</BrandName>
+		<ManufacturerId>2</ManufacturerId>
+		<Name>Model J</Name>
+	</Model>
+	<Model>
+		<Id>3</Id>
+		<BrandName>Tesla</BrandName>
+		<ManufacturerId>2</ManufacturerId>
+		<Name>Model B</Name>
+	</Model>
+	<Model>
+		<Id>4</Id>
+		<BrandName>Tuskla</BrandName>
+		<ManufacturerId>3</ManufacturerId>
+		<Name>Model Xi</Name>
+	</Model>
+</Models>

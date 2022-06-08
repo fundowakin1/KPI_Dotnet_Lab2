@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Vehicles>
+	<Vehicle>
+		<Id>1</Id>
+		<BodyType>Coupe</BodyType>
+		<Color>Black</Color>
+		<Condition>Good</Condition>
+		<LicensePlate>AA1337AA</LicensePlate>
+		<ModelId>1</ModelId>
+		<VinCode>21314125151521</VinCode>
+		<YearOfIssue>2017</YearOfIssue>
+	</Vehicle>
+	<Vehicle>
+		<Id>2</Id>
+		<BodyType>Minivan</BodyType>
+		<Color>Red</Color>
+		<Condition>Normal</Condition>
+		<LicensePlate>BB3525AA</LicensePlate>
+		<ModelId>2</ModelId>
+		<VinCode>1242141241251251</VinCode>
+		<YearOfIssue>2020</YearOfIssue>
+	</Vehicle>
+	<Vehicle>
+		<Id>3</Id>
+		<BodyType>Pickup</BodyType>
+		<Color>Gold</Color>
+		<Condition>Good</Condition>
+		<LicensePlate>AA1532BF</LicensePlate>
+		<ModelId>1</ModelId>
+		<VinCode>2312412414121</VinCode>
+		<YearOfIssue>2019</YearOfIssue>
+	</Vehicle>
+</Vehicles>

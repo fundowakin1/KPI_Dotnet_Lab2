@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VehicleDrivers>
+	<VehicleDriver>
+		<DriverId>1</DriverId>
+		<VehicleId>2</VehicleId>
+		<IsOwner>true</IsOwner>
+	</VehicleDriver>
+	<VehicleDriver>
+		<DriverId>2</DriverId>
+		<VehicleId>1</VehicleId>
+		<IsOwner>true</IsOwner>
+	</VehicleDriver>
+	<VehicleDriver>
+		<DriverId>1</DriverId>
+		<VehicleId>1</VehicleId>
+		<IsOwner>false</IsOwner>
+	</VehicleDriver>
+	<VehicleDriver>
+		<DriverId>3</DriverId>
+		<VehicleId>3</VehicleId>
+		<IsOwner>false</IsOwner>
+	</VehicleDriver>
+</VehicleDrivers>

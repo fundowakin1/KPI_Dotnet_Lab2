@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Manufacturers>
+	<Manufacturer>
+		<Id>1</Id>
+		<Name>Volkswagen Group</Name>
+	</Manufacturer>
+	<Manufacturer>
+		<Id>2</Id>
+		<Name>Elon Musk</Name>
+	</Manufacturer>
+	<Manufacturer>
+		<Id>3</Id>
+		<Name>Elon Ma</Name>
+	</Manufacturer>
+</Manufacturers>
