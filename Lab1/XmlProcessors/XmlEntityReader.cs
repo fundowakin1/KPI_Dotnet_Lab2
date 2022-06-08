@@ -4,7 +4,6 @@ using System.Linq;
 using System.Xml.Linq;
 using Lab1.Extensions;
 using Lab1.Models;
-using Lab1.ValueConstants;
 
 namespace Lab1.XmlProcessors
 {
@@ -21,7 +20,7 @@ namespace Lab1.XmlProcessors
             if (xml.Root == null)
                 throw new FileLoadException($"The file {filename} is empty");
 
-            list.AddRange(xml.Descendants(EntityNameConstants.DriverString)
+            list.AddRange(xml.Root.Elements()
                 .Select(driver => driver.ToLicensedDriver()));
 
             return list;
@@ -38,7 +37,7 @@ namespace Lab1.XmlProcessors
             if (xml.Root == null)
                 throw new FileLoadException($"The file {filename} is empty");
 
-            list.AddRange(xml.Descendants(EntityNameConstants.VehicleString)
+            list.AddRange(xml.Root.Elements()
                 .Select(vehicle => vehicle.ToVehicle()));
 
             return list;
@@ -55,7 +54,7 @@ namespace Lab1.XmlProcessors
             if (xml.Root == null)
                 throw new FileLoadException($"The file {filename} is empty");
 
-            list.AddRange(xml.Descendants(EntityNameConstants.ModelString)
+            list.AddRange(xml.Root.Elements()
                 .Select(model => model.ToModel()));
 
             return list;
@@ -71,7 +70,7 @@ namespace Lab1.XmlProcessors
             if (xml.Root == null)
                 throw new FileLoadException($"The file {filename} is empty");
 
-            list.AddRange(xml.Descendants(EntityNameConstants.ManufacturerString)
+            list.AddRange(xml.Root.Elements()
                 .Select(manufacturer => manufacturer.ToManufacturer()));
 
             return list;
@@ -87,7 +86,7 @@ namespace Lab1.XmlProcessors
             if (xml.Root == null)
                 throw new FileLoadException($"The file {filename} is empty");
 
-            list.AddRange(xml.Descendants(EntityNameConstants.VehicleDriverString)
+            list.AddRange(xml.Root.Elements()
                 .Select(vd => vd.ToVehicleDriver()));
 
             return list;

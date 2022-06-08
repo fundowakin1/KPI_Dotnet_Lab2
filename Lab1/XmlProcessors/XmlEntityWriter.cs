@@ -44,10 +44,5 @@ namespace Lab1.XmlProcessors
 
             xDoc.Save(filename);
         }
-
-        public void Dispose()
-        {
-            
-        }
     }
 }

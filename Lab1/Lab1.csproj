@@ -62,7 +62,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\QueriesRepository.cs" />
-    <Compile Include="ValueConstants\EntityNameConstants.cs" />
     <Compile Include="ViewModels\AverageQuantityViewModel.cs" />
     <Compile Include="ViewModels\EntityAndQuantityViewModel.cs" />
     <Compile Include="ViewModels\FullVehicleInfoViewModel.cs" />

@@ -6,7 +6,6 @@ using Lab1.Contexts;
 using Lab1.Enums;
 using Lab1.Extensions;
 using Lab1.Models;
-using Lab1.ValueConstants;
 using Lab1.ViewModels;
 
 namespace Lab1.Repositories
@@ -22,17 +21,17 @@ namespace Lab1.Repositories
 
         public IEnumerable<Vehicle> GetAllVehicles()
         {
-            return from vehicle in _context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString)
+            return from vehicle in _context.VehiclesXml.Root.Elements()
                 select vehicle.ToVehicle();
         }
 
         public IEnumerable<FullVehicleInfoViewModel> GetFullInfoAboutVehicles()
         {
-            return from vehicle in _context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString)
-                   join model in _context.ModelsXml.Root.Elements(EntityNameConstants.ModelString) 
+            return from vehicle in _context.VehiclesXml.Root.Elements()
+                   join model in _context.ModelsXml.Root.Elements() 
                        on (int)vehicle.Element("ModelId") 
                        equals (int)model.Element("Id")
-                join manufacturer in _context.ManufacturersXml.Root.Elements(EntityNameConstants.ManufacturerString) 
+                join manufacturer in _context.ManufacturersXml.Root.Elements() 
                     on (int)model.Element("ManufacturerId") 
                     equals (int)manufacturer.Element("Id")
                 select new FullVehicleInfoViewModel()
@@ -45,21 +44,21 @@ namespace Lab1.Repositories
 
         public IEnumerable<LicensedDriver> GetDriversWithNameStartingWithA()
         {
-            return from driver in _context.DriversXml.Root.Elements(EntityNameConstants.DriverString)
+            return from driver in _context.DriversXml.Root.Elements()
                    where driver.Element("Name").Value.StartsWith("A")
                 select driver.ToLicensedDriver();
         }
 
         public IEnumerable<OwnerWithCarNameViewModel> GetVehicleOwnersWithModelNames()
         {
-            return from driver in _context.DriversXml.Root.Elements(EntityNameConstants.DriverString)
-                   join vehicleDriver in _context.VehicleDriversXml.Root.Elements(EntityNameConstants.VehicleDriverString) 
+            return from driver in _context.DriversXml.Root.Elements()
+                   join vehicleDriver in _context.VehicleDriversXml.Root.Elements() 
                        on (int)driver.Element("LicenseId") 
                        equals (int)vehicleDriver.Element("DriverId")
-                join vehicle in _context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString) 
+                join vehicle in _context.VehiclesXml.Root.Elements() 
                     on (int)vehicleDriver.Element("VehicleId") 
                     equals (int)vehicle.Element("Id")
-                join model in _context.ModelsXml.Root.Elements(EntityNameConstants.ModelString) 
+                join model in _context.ModelsXml.Root.Elements() 
                     on (int)vehicle.Element("ModelId") 
                     equals (int)model.Element("Id")
                 where (bool)vehicleDriver.Element("IsOwner")
@@ -72,7 +71,7 @@ namespace Lab1.Repositories
 
         public IEnumerable<IGrouping<string, Vehicle>> GetVehiclesGroupedByCondition()
         {
-            return from vehicle in _context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString)
+            return from vehicle in _context.VehiclesXml.Root.Elements()
                 group vehicle by vehicle.Element("Condition").Value
                 into newVehicle
                 select new Grouping<string, Vehicle>()
@@ -85,8 +84,8 @@ namespace Lab1.Repositories
 
         public IEnumerable<LicensedDriver> GetNotOwnersOrderedByAge()
         {
-           return from driver in _context.DriversXml.Root.Elements(EntityNameConstants.DriverString)
-                  join vehicleDriver in _context.VehicleDriversXml.Root.Elements(EntityNameConstants.VehicleDriverString) 
+           return from driver in _context.DriversXml.Root.Elements()
+                  join vehicleDriver in _context.VehicleDriversXml.Root.Elements() 
                       on (int)driver.Element("LicenseId") 
                       equals (int)vehicleDriver.Element("DriverId")
                 where !(bool)vehicleDriver.Element("IsOwner")
@@ -96,11 +95,11 @@ namespace Lab1.Repositories
 
         public IEnumerable<VehicleDriverViewModel> GetRedAndBlackVehiclesWithDrivers()
         {
-            return from vehicle in _context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString)
-                   join vehicleDriver in _context.VehicleDriversXml.Root.Elements(EntityNameConstants.VehicleDriverString)
+            return from vehicle in _context.VehiclesXml.Root.Elements()
+                   join vehicleDriver in _context.VehicleDriversXml.Root.Elements()
                        on (int)vehicle.Element("Id") 
                        equals (int)vehicleDriver.Element("VehicleId")
-                join driver in _context.DriversXml.Root.Elements(EntityNameConstants.DriverString)
+                join driver in _context.DriversXml.Root.Elements()
                     on (int)vehicleDriver.Element("DriverId") 
                     equals (int)driver.Element("LicenseId")
                 where vehicle.Element("Color").Value.ParseToColor() is Color.Black or Color.Red
@@ -114,17 +113,17 @@ namespace Lab1.Repositories
 
         public int GetVehiclesOlderThan3Years()
         {
-            return (from vehicle in _context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString)
+            return (from vehicle in _context.VehiclesXml.Root.Elements()
                     where (DateTime.Now.Year - (int)vehicle.Element("YearOfIssue")) > 3
                                      select vehicle).Count();
         }
 
         public IEnumerable<LicensedDriver> GetDriversWithoutLicense()
         {
-            return _context.DriversXml.Root.Elements(EntityNameConstants.DriverString)
+            return _context.DriversXml.Root.Elements()
                 .Except(
-                    _context.DriversXml.Root.Elements(EntityNameConstants.DriverString)
-                        .Join(_context.VehicleDriversXml.Root.Elements(EntityNameConstants.VehicleDriverString),
+                    _context.DriversXml.Root.Elements()
+                        .Join(_context.VehicleDriversXml.Root.Elements(),
                             driver => (int)driver.Element("LicenseId"),
                             vehicleDriver => (int)vehicleDriver.Element("DriverId"),
                             (driver, vehicleDriver) => driver))
@@ -133,8 +132,8 @@ namespace Lab1.Repositories
 
         public IEnumerable<VehicleModelViewModel> GetAllAudiExceptBlack()
         {
-            return _context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString)
-                .Join(_context.ModelsXml.Root.Elements(EntityNameConstants.ModelString), 
+            return _context.VehiclesXml.Root.Elements()
+                .Join(_context.ModelsXml.Root.Elements(), 
                     vehicle => (int)vehicle.Element("ModelId"), 
                     model => (int)model.Element("Id"),
                     (vehicle, model) => new VehicleModelViewModel()
@@ -148,8 +147,8 @@ namespace Lab1.Repositories
 
         public IEnumerable<EntityAndQuantityViewModel<Manufacturer>> GetManufacturerAndModelsQuantity()
         {
-            return _context.ManufacturersXml.Root.Elements(EntityNameConstants.ManufacturerString)
-                .Join(_context.ModelsXml.Root.Elements(EntityNameConstants.ModelString), 
+            return _context.ManufacturersXml.Root.Elements()
+                .Join(_context.ModelsXml.Root.Elements(), 
                     manufacturer => (int)manufacturer.Element("Id"), 
                     model => (int)model.Element("ManufacturerId"), 
                     (manufacturer, model) => new {
@@ -166,11 +165,11 @@ namespace Lab1.Repositories
 
         public AverageQuantityViewModel GetAverageVehiclesYearOfIssueAndQuantity()
         {
-           return _context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString)
+           return _context.VehiclesXml.Root.Elements()
                 .Select(x => new AverageQuantityViewModel()
                 {
-                    Count = _context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString).Count(), 
-                    Average = _context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString)
+                    Count = _context.VehiclesXml.Root.Elements().Count(), 
+                    Average = _context.VehiclesXml.Root.Elements()
                         .Average(y => (int)y.Element("YearOfIssue"))
                 })
                 .FirstOrDefault();
@@ -178,8 +177,8 @@ namespace Lab1.Repositories
 
         public IEnumerable<EntityAndQuantityViewModel<LicensedDriver>> GetDriversWith2AndMoreVehicles()
         {
-           return _context.DriversXml.Root.Elements(EntityNameConstants.DriverString)
-                .Join(_context.VehicleDriversXml.Root.Elements(EntityNameConstants.VehicleDriverString), 
+           return _context.DriversXml.Root.Elements()
+                .Join(_context.VehicleDriversXml.Root.Elements(), 
                     driver => (int)driver.Element("LicenseId"), 
                     vehicleDriver => (int)vehicleDriver.Element("DriverId"),
                     (driver, vehicleDriver) => new {
@@ -197,12 +196,12 @@ namespace Lab1.Repositories
 
         public IEnumerable<Color> GetAllColorsOfVolkswagen()
         {
-            return _context.ManufacturersXml.Root.Elements(EntityNameConstants.ManufacturerString)
-                .Join(_context.ModelsXml.Root.Elements(EntityNameConstants.ModelString), 
+            return _context.ManufacturersXml.Root.Elements()
+                .Join(_context.ModelsXml.Root.Elements(), 
                     manufacturer => (int)manufacturer.Element("Id"), 
                     model => (int)model.Element("ManufacturerId"),
                     (manufacturer, model) => (manufacturer, model))
-                .Join(_context.VehiclesXml.Root.Elements(EntityNameConstants.VehicleString), 
+                .Join(_context.VehiclesXml.Root.Elements(), 
                     tuple => (int)tuple.model.Element("Id"), 
                     vehicle => (int)vehicle.Element("ModelId"),
                     (tuple, vehicle) => new 
@@ -217,7 +216,7 @@ namespace Lab1.Repositories
 
         public IEnumerable<EntityAndQuantityViewModel<Model>> GetUniqueModelOfManufacturer()
         {
-            return _context.ModelsXml.Root.Elements(EntityNameConstants.ModelString)
+            return _context.ModelsXml.Root.Elements()
                 .GroupBy(model => (int)model.Element("ManufacturerId"))
                 .Select(x => new EntityAndQuantityViewModel<Model>()
                 {
