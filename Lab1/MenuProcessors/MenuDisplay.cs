@@ -79,7 +79,7 @@ namespace Lab1.MenuProcessors
                             var drivers = _xmlReader.GetDrivers(_context.Seed.DriversXml);
                             foreach (var item in drivers)
                                 Console.WriteLine(item);
-
+                            
                             Console.ReadKey();
                             break;
                         case '2':
@@ -195,6 +195,7 @@ namespace Lab1.MenuProcessors
                             Console.Clear();
                             break;
                     }
+                    _context.Update();
                 }
                 catch (Exception ex)
                 {

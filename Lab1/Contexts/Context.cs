@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System;
+using System.Xml.Linq;
 using Lab1.Seeders;
 
 namespace Lab1.Contexts
@@ -14,12 +15,17 @@ namespace Lab1.Contexts
 
         public Context(XmlSeed xml)
         {
-            Seed = xml;
-            DriversXml = XDocument.Load(xml.DriversXml);
-            VehiclesXml = XDocument.Load(xml.VehiclesXml);
-            ModelsXml = XDocument.Load(xml.ModelsXml);
-            ManufacturersXml = XDocument.Load(xml.ManufacturersXml);
-            VehicleDriversXml = XDocument.Load(xml.VehicleDriversXml);
+            Seed = xml ?? throw new NullReferenceException("Seed was null");
+            Update();
+        }
+
+        public void Update()
+        {
+            DriversXml = XDocument.Load(Seed.DriversXml);
+            VehiclesXml = XDocument.Load(Seed.VehiclesXml);
+            ModelsXml = XDocument.Load(Seed.ModelsXml);
+            ManufacturersXml = XDocument.Load(Seed.ManufacturersXml);
+            VehicleDriversXml = XDocument.Load(Seed.VehicleDriversXml);
         }
     }
 }

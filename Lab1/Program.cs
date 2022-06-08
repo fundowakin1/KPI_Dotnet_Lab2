@@ -9,15 +9,23 @@ namespace Lab1
     {
         public static void Main()
         {
-            var xml = new XmlSeed();
-            var context = new Context(xml);
-            
-            var menu = new MenuDisplay(context);
-            while (true)
+            try
             {
-                menu.MainMenu();
-                Console.Clear();
+                var xml = new XmlSeed();
+                var context = new Context(xml);
+
+                var menu = new MenuDisplay(context);
+                while (true)
+                {
+                    menu.MainMenu();
+                    Console.Clear();
+                }
             }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
     }
 }
